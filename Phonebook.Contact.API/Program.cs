@@ -15,7 +15,7 @@ builder.Services
     failureStatus: HealthStatus.Unhealthy | HealthStatus.Healthy,
     tags: new string[] { "mongodb" })
     .AddRabbitMQ(
-    rabbitConnectionString: "amqp://guest:guest@localhost:15762",
+    rabbitConnectionString: "amqp://guest:guest@localhost:5672",
     name: "RabbitMQ",
     failureStatus: HealthStatus.Unhealthy | HealthStatus.Healthy,
     tags: new string[] { "rabbitmq" });
