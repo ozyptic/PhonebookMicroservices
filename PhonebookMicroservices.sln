@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonebook.Contact.API", "Phonebook.Contact.API\Phonebook.Contact.API.csproj", "{9CB8840D-B854-42A0-A840-31041FC7F73B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CB8840D-B854-42A0-A840-31041FC7F73B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB8840D-B854-42A0-A840-31041FC7F73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB8840D-B854-42A0-A840-31041FC7F73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB8840D-B854-42A0-A840-31041FC7F73B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07C3EB2F-C004-4644-AAD3-E45E6DF890AE}
+	EndGlobalSection
+EndGlobal
