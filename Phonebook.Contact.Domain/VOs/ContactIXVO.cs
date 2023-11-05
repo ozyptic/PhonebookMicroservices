@@ -1,17 +1,13 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Phonebook.Contact.Domain.Entities
+namespace Phonebook.Contact.Domain.VOs
 {
-    public class Contact
+    public class ContactIXVO
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public required string Id { get; set; }
         public required string Name { get; set; }
         public required string LastName { get; set; }
