@@ -34,7 +34,7 @@ namespace Phonebook.Report.UnitTest
         public async Task GetAllReports_TEST_Success()
         {
             _reportRepoMock.Setup(x => x.GetAllReportsAsync())
-              .Returns(Task.FromResult(FakeDatas.GetReportsFake()));
+              .Returns(Task.FromResult(FakeDatas.GetReportsFake())!);
 
             var actionResult = await _reportController.GetAllReports();
             var objectResult = (ObjectResult)actionResult;
@@ -50,7 +50,7 @@ namespace Phonebook.Report.UnitTest
             var fakeReport = FakeDatas.GetReportById(FakeDatas.FakeReportId);
 
             _reportRepoMock.Setup(x => x.CreateReportAsync())
-              .Returns(Task.FromResult(fakeReport));
+              .Returns(Task.FromResult(fakeReport)!);
 
             _serviceBusMock.Setup(x => x.Publish(It.IsAny<ReportStartEvent>()));
 
@@ -82,7 +82,7 @@ namespace Phonebook.Report.UnitTest
         public async Task GetReportById_TEST_Success()
         {
             _reportRepoMock.Setup(x => x.GetReportByIdAsync(It.IsAny<string>()))
-              .Returns(Task.FromResult(FakeDatas.GetReportById(FakeDatas.FakeReportId)));
+              .Returns(Task.FromResult(FakeDatas.GetReportById(FakeDatas.FakeReportId))!);
 
             var actionResult = await _reportController.GetReportById(FakeDatas.FakeReportId);
 

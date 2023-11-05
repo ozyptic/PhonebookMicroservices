@@ -10,7 +10,7 @@ namespace Phonebook.Report.Domain.Entities
 {
     public class ReportDetail
     {
-        public ReportDetail(string? reportId, string location, int contactCount, int phoneNumberCount)
+        public ReportDetail(string? reportId, string? location, int contactCount, int phoneNumberCount)
         {
             ReportId = reportId;
             Location = location;
@@ -20,11 +20,11 @@ namespace Phonebook.Report.Domain.Entities
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         [BsonRepresentation(BsonType.ObjectId)]
         public string? ReportId { get; set; }
         [BsonRepresentation(BsonType.String)]
-        public string Location { get; set; }
+        public string? Location { get; set; }
         [BsonRepresentation(BsonType.Int32)]
         public int PhoneNumberCount { get; set; }
         [BsonRepresentation(BsonType.Int32)]

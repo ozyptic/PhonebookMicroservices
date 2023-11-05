@@ -10,15 +10,14 @@ using RabbitMQ.Client.Exceptions;
 
 namespace EventBus.RabbitMQ
 {
-    public class EventBusRabbitMQ : BaseEventBus
+    public class EventBusRabbitMq : BaseEventBus
     {
         RabbitMqPersistentConnection persistentConnection;
         private readonly IConnectionFactory? connectionFactory;
         private readonly IModel? consumerChannel;
 
-        public EventBusRabbitMQ(EventBusConfig config, IServiceProvider serviceProvider, IConnectionFactory? connectionFactory) : base(config, serviceProvider)
+        public EventBusRabbitMq(EventBusConfig config, IServiceProvider serviceProvider) : base(config, serviceProvider)
         {
-            this.connectionFactory = connectionFactory;
             if (EventBusConfig?.Connection != null)
             {
                 if (EventBusConfig.Connection is ConnectionFactory factory)

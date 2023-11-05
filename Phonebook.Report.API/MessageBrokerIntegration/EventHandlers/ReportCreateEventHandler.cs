@@ -36,12 +36,15 @@ namespace Phonebook.Report.API.MessageBrokerIntegration.EventHandlers
             {
                 _logger.LogInformation("@ Report Not Completed : | {IntegrationEventId} | Error is : " + ex.Message);
             }
-            if (@event == null) return;
-            var details = @event.Details
-                .Select(x => new ReportDetail(@event.ReportId, x.Location, x.ContactCount, x.PhoneNumberCount))
-                .ToList();
 
-            await _reportDetailRepository.CreateReportDetailsAsync(details);
+            if (@event.Details != null)
+            {
+                var details = @event.Details
+                    .Select(x => new ReportDetail(@event.ReportId, x.Location, x.ContactCount, x.PhoneNumberCount))
+                    .ToList();
+
+                await _reportDetailRepository.CreateReportDetailsAsync(details);
+            }
         }
     }
 }
