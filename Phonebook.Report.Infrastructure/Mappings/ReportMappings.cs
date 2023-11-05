@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Phonebook.Report.Domain.Dtos;
 using Phonebook.Report.Domain.Entities;
-using Phonebook.Report.Domain.VMs;
 
 namespace Phonebook.Report.Infrastructure.Mappings
 {
@@ -13,9 +13,9 @@ namespace Phonebook.Report.Infrastructure.Mappings
     {
         public ReportMappings()
         {
-            CreateMap<Reports, ReportVM>().ReverseMap();
-            CreateMap<Reports, ReportIxVM>().ReverseMap();
-            CreateMap<ReportDetail, ReportDetailVM>().ReverseMap();
+            CreateMap<Reports, ReportDto>().ReverseMap();
+            CreateMap<Reports, ReportIxDto>().ReverseMap();
+            CreateMap<ReportDetail, ReportDetailDto>().ReverseMap();
         }
     }
 }
