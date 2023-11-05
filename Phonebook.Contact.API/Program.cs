@@ -46,7 +46,7 @@ builder.Services.AddEndpointsApiExplorer();
 var app = builder.Build();
 
 
-app.UseHealthChecks("/contact-health", new HealthCheckOptions
+app.UseHealthChecks("/contactapi-health", new HealthCheckOptions
 {
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
