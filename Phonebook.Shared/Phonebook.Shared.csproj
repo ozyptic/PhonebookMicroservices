@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Phonebook.Contact.Domain\Phonebook.Contact.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

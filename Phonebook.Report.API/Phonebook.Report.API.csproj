@@ -11,4 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Phonebook.Report.Business\Phonebook.Report.Business.csproj" />
+    <ProjectReference Include="..\Phonebook.Report.Entity\Phonebook.Report.Entity.csproj" />
+    <ProjectReference Include="..\Phonebook.Shared\Phonebook.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
