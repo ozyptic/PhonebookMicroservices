@@ -113,7 +113,7 @@ namespace Phonebook.Contact.UnitTest
         }
 
         [Fact]
-        public async Task AddContact_TEST_NotValid()
+        public Task AddContact_TEST_NotValid()
         {
             var model = new ContactAddVO
             {
@@ -126,6 +126,7 @@ namespace Phonebook.Contact.UnitTest
             var results = model.Validate(validationContext);
 
             Assert.Contains(results, x => x.MemberNames.Contains(nameof(ContactAddVO.Name)));
+            return Task.CompletedTask;
         }
 
         [Fact]
@@ -150,7 +151,7 @@ namespace Phonebook.Contact.UnitTest
         }
 
         [Fact]
-        public async Task AddContactInfo_TEST_NotValid()
+        public Task AddContactInfo_TEST_NotValid()
         {
             var model = new ContactInfoVO
             {
@@ -160,15 +161,13 @@ namespace Phonebook.Contact.UnitTest
                 Value = ""
             };
 
-            //Act
             var validationContext = new ValidationContext(model);
-
             var results = model.Validate(validationContext);
 
-            //Assert
-
-            Assert.Contains(results, x => x.MemberNames.Contains(nameof(ContactInfoVO.Value)));
-            Assert.Contains(results, x => x.MemberNames.Contains(nameof(ContactInfoVO.ContactId)));
+            var validationResults = results.ToList();
+            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoVO.Value)));
+            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoVO.ContactId)));
+            return Task.CompletedTask;
         }
 
         [Fact]

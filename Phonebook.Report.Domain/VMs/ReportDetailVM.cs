@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Phonebook.Report.Domain.VMs
 {
-    public class ReportInfoVM
+    public class ReportDetailVM
     {
         public string Location { get; set; }
         public int ContactCount { get; set; }

@@ -8,6 +8,6 @@ namespace Phonebook.Shared.Models
 {
     public class ResultId<T>
     {
-        public T Id { get; set; }
+        public T? Id { get; set; }
     }
 }

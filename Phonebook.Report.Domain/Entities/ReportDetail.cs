@@ -10,12 +10,13 @@ namespace Phonebook.Report.Domain.Entities
 {
     public class ReportDetail
     {
-        public ReportDetail(string reportId, string location, int contactCount, int phoneNumberCount)
+        public ReportDetail(string reportId, string location, int contactCount, int phoneNumberCount, string id)
         {
             ReportId = reportId;
             Location = location;
             ContactCount = contactCount;
             PhoneNumberCount = phoneNumberCount;
+            Id = id;
         }
 
         [BsonId]

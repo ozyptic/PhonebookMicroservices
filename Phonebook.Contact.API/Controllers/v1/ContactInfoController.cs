@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Diagnostics;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Phonebook.Contact.Domain.Entities;
@@ -53,11 +54,12 @@ namespace Phonebook.Contact.API.Controllers.v1
                 var list = await _contactInfoRepository.GetAllContactInfosAsListAsync();
 
                 IList<ContactInfoVO>? infos = null;
-                if (list != null && list.Any())
+                if (list.Any())
                 {
                     infos = _mapper.Map<IList<ContactInfoVO>>(list);
                 }
 
+                Debug.Assert(infos != null, nameof(infos) + " != null");
                 return ResponseDataModel<IList<ContactInfoVO>>.Success(infos, (int)HttpStatusCode.OK);
             }
             catch

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Phonebook.Report.Domain.VMs
 {
-    public class ReportViewModel
+    public class ReportVM
     {
+
         public string Id { get; set; }
         public int Status { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? CompletedDate { get; set; }
-        public IList<ReportInfoVM> ReportInfos { get; set; }
+        public IList<ReportDetailVM> ReportInfos { get; set; }
     }
 }
