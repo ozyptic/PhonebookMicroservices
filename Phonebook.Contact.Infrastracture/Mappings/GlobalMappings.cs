@@ -17,8 +17,8 @@ namespace Phonebook.Contact.Infrastracture.Mappings
             CreateMap<Contacts, ContactIXVO>().ReverseMap();
             CreateMap<Contacts, ContactUpdateVO>().ReverseMap();
             CreateMap<Contacts, ContactAddVO>().ReverseMap();
-            CreateMap<ContactInfo, ContactDetailVO>().ReverseMap();
-            CreateMap<ContactInfo, ContactAddDetailVO>().ReverseMap();
+            CreateMap<ContactInfo, ContactInfoVO>().ReverseMap();
+            CreateMap<ContactInfo, ContactAddInfoVO>().ReverseMap();
         }
     }
 }

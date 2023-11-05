@@ -20,19 +20,19 @@ namespace Phonebook.Contact.Domain.VOs
 
             if (string.IsNullOrEmpty(Id))
             {
-                yield return new ValidationResult("alanı boş olamaz.", new[] { nameof(Id) });
+                yield return new ValidationResult("field cannot be empty", new[] { nameof(Id) });
             }
             else if (string.IsNullOrEmpty(Name))
             {
-                yield return new ValidationResult("alanı boş olamaz.", new[] { nameof(Name) });
+                yield return new ValidationResult("field cannot be empty", new[] { nameof(Name) });
             }
             else if (string.IsNullOrEmpty(LastName))
             {
-                yield return new ValidationResult("alanı boş olamaz.", new[] { nameof(LastName) });
+                yield return new ValidationResult("field cannot be empty.", new[] { nameof(LastName) });
             }
             else if (string.IsNullOrEmpty(Company))
             {
-                yield return new ValidationResult("alanı boş olamaz.", new[] { nameof(Company) });
+                yield return new ValidationResult("field cannot be empty", new[] { nameof(Company) });
             }
         }
     }
