@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 using Phonebook.Contact.Domain.Entities;
-using Phonebook.Contact.Domain.VOs;
 using Phonebook.Contact.Infrastracture.Interfaces;
 using System;
 using System.Collections.Generic;

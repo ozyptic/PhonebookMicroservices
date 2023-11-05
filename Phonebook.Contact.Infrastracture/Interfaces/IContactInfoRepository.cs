@@ -1,5 +1,4 @@
 ﻿using Phonebook.Contact.Domain.Entities;
-using Phonebook.Contact.Domain.VOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

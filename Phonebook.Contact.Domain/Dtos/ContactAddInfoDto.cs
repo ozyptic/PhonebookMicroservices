@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Phonebook.Contact.Domain.VOs
+namespace Phonebook.Contact.Domain.Dtos
 {
-    public class ContactAddInfoVo : IValidatableObject
+    public class ContactAddInfoDto : IValidatableObject
     {
         public required string ContactId { get; set; }
         public int ContactInfoType { get; set; }

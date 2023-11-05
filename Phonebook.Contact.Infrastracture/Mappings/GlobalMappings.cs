@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Phonebook.Contact.Domain.Entities;
-using Phonebook.Contact.Domain.VOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Phonebook.Contact.Domain.Dtos;
 
 namespace Phonebook.Contact.Infrastracture.Mappings
 {
@@ -13,12 +13,12 @@ namespace Phonebook.Contact.Infrastracture.Mappings
     {
         public GlobalMappings()
         {
-            CreateMap<Contacts, ContactVo>().ReverseMap();
-            CreateMap<Contacts, ContactIxvo>().ReverseMap();
-            CreateMap<Contacts, ContactUpdateVo>().ReverseMap();
-            CreateMap<Contacts, ContactAddVo>().ReverseMap();
-            CreateMap<ContactInfo, ContactInfoVo>().ReverseMap();
-            CreateMap<ContactInfo, ContactAddInfoVo>().ReverseMap();
+            CreateMap<Contacts, ContactDto>().ReverseMap();
+            CreateMap<Contacts, ContactIXDto>().ReverseMap();
+            CreateMap<Contacts, ContactUpdateDto>().ReverseMap();
+            CreateMap<Contacts, ContactAddDto>().ReverseMap();
+            CreateMap<ContactInfo, ContactInfoDto>().ReverseMap();
+            CreateMap<ContactInfo, ContactAddInfoDto>().ReverseMap();
         }
     }
 }

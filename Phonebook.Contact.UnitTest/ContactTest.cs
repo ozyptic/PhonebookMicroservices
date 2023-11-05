@@ -4,11 +4,11 @@ using Moq;
 using Phonebook.Contact.API.Controllers.v1;
 using Phonebook.Contact.Domain.Entities;
 using Phonebook.Contact.Domain.Enums;
-using Phonebook.Contact.Domain.VOs;
 using Phonebook.Contact.Infrastracture.Interfaces;
 using Phonebook.Contact.Infrastracture.Mappings;
 using Phonebook.Shared.Models;
 using System.ComponentModel.DataAnnotations;
+using Phonebook.Contact.Domain.Dtos;
 using Phonebook.Contact.UnitTest.Data;
 using Xunit;
 
@@ -44,7 +44,7 @@ namespace Phonebook.Contact.UnitTest
             var objectResult = (ObjectResult)actionResult;
 
             Assert.Equal(objectResult.StatusCode, (int)System.Net.HttpStatusCode.OK);
-            Assert.IsType<ResponseDataModel<IList<ContactInfoVo>>>(objectResult.Value);
+            Assert.IsType<ResponseDataModel<IList<ContactInfoDto>>>(objectResult.Value);
         }
 
         [Fact]
@@ -57,7 +57,7 @@ namespace Phonebook.Contact.UnitTest
             var objectResult = (ObjectResult)actionResult;
 
             Assert.Equal(objectResult.StatusCode, (int)System.Net.HttpStatusCode.OK);
-            Assert.IsType<ResponseDataModel<IList<ContactInfoVo>>>(objectResult.Value);
+            Assert.IsType<ResponseDataModel<IList<ContactInfoDto>>>(objectResult.Value);
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace Phonebook.Contact.UnitTest
 
             var actionResult = await _contactController.GetContactById(FakeDatas.FakeContactId);
             var objectResult = (ObjectResult)actionResult;
-            var response = (ResponseDataModel<ContactVo>)objectResult.Value!;
+            var response = (ResponseDataModel<ContactDto>)objectResult.Value!;
 
             Assert.Equal(objectResult.StatusCode, (int)System.Net.HttpStatusCode.OK);
             Assert.NotNull(response);
@@ -92,7 +92,7 @@ namespace Phonebook.Contact.UnitTest
         public async Task AddContact_TEST_Create()
         {
             var fakeContact = FakeDatas.GetContactById(FakeDatas.FakeContactId);
-            var model = _mapper.Map<ContactAddVo>(fakeContact);
+            var model = _mapper.Map<ContactAddDto>(fakeContact);
 
             _contactRepoMock.Setup(x => x.AddContactAsync(It.IsAny<Contacts>()))
               .Returns(Task.FromResult(fakeContact));
@@ -111,7 +111,7 @@ namespace Phonebook.Contact.UnitTest
         [Fact]
         public Task AddContact_TEST_NotValid()
         {
-            var model = new ContactAddVo
+            var model = new ContactAddDto
             {
                 Name = "",
                 LastName = "Danny",
@@ -121,7 +121,7 @@ namespace Phonebook.Contact.UnitTest
             var validationContext = new ValidationContext(model);
             var results = model.Validate(validationContext);
 
-            Assert.Contains(results, x => x.MemberNames.Contains(nameof(ContactAddVo.Name)));
+            Assert.Contains(results, x => x.MemberNames.Contains(nameof(ContactAddDto.Name)));
             return Task.CompletedTask;
         }
 
@@ -129,7 +129,7 @@ namespace Phonebook.Contact.UnitTest
         public async Task AddContactInfo_TEST_Create()
         {
             var fakeContactInfo = FakeDatas.GetContactInfoById(FakeDatas.FakeContactInfoId);
-            var model = _mapper.Map<ContactAddInfoVo>(fakeContactInfo);
+            var model = _mapper.Map<ContactAddInfoDto>(fakeContactInfo);
 
             _contactInfoRepoMock.Setup(x => x.AddContactInfoAsync(It.IsAny<ContactInfo>()))
               .Returns(Task.FromResult(fakeContactInfo));
@@ -148,7 +148,7 @@ namespace Phonebook.Contact.UnitTest
         [Fact]
         public Task AddContactInfo_TEST_NotValid()
         {
-            var model = new ContactInfoVo
+            var model = new ContactInfoDto
             {
                 Id = "123ab456cd78e10",
                 ContactId = "",
@@ -160,8 +160,8 @@ namespace Phonebook.Contact.UnitTest
             var results = model.Validate(validationContext);
 
             var validationResults = results.ToList();
-            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoVo.Value)));
-            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoVo.ContactId)));
+            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoDto.Value)));
+            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoDto.ContactId)));
             return Task.CompletedTask;
         }
 

@@ -3,10 +3,10 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Phonebook.Contact.Domain.Entities;
-using Phonebook.Contact.Domain.VOs;
 using Phonebook.Contact.Infrastracture.Interfaces;
 using Phonebook.Shared.Models;
 using System.Net;
+using Phonebook.Contact.Domain.Dtos;
 
 namespace Phonebook.Contact.API.Controllers.v1
 {
@@ -27,7 +27,7 @@ namespace Phonebook.Contact.API.Controllers.v1
         [HttpPost("AddContactInfo")]
         [ProducesResponseType(typeof(ResponseDataModel<ContactInfo>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ResponseDataModel<string>), (int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> AddContactInfo([FromBody] ContactAddInfoVo contactAddInfoVo)
+        public async Task<IActionResult> AddContactInfo([FromBody] ContactAddInfoDto contactAddInfoVo)
         {
             try
             {
@@ -53,14 +53,14 @@ namespace Phonebook.Contact.API.Controllers.v1
             {
                 var list = await _contactInfoRepository.GetAllContactInfosAsListAsync();
 
-                IList<ContactInfoVo>? infos = null;
+                IList<ContactInfoDto>? infos = null;
                 if (list.Any())
                 {
-                    infos = _mapper.Map<IList<ContactInfoVo>>(list);
+                    infos = _mapper.Map<IList<ContactInfoDto>>(list);
                 }
 
                 Debug.Assert(infos != null, nameof(infos) + " != null");
-                return ResponseDataModel<IList<ContactInfoVo>>.Success(infos, (int)HttpStatusCode.OK);
+                return ResponseDataModel<IList<ContactInfoDto>>.Success(infos, (int)HttpStatusCode.OK);
             }
             catch
             {

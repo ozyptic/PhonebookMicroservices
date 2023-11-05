@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Phonebook.Contact.Domain.VOs
+namespace Phonebook.Contact.Domain.Dtos
 {
-    public class ContactAddVo : IValidatableObject
+    public class ContactDto : IValidatableObject
     {
+        public required string Id { get; set; }
         public required string Name { get; set; }
         public required string LastName { get; set; }
         public required string Company { get; set; }
+        public IList<ContactInfoDto> ContactInfoVOs { get; set; } = new List<ContactInfoDto>();
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
