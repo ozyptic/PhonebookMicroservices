@@ -100,10 +100,12 @@ In terms of data structure:
 `
 
 `
-  POST http://localhost:5164/Reports/CreateReport
+  POST http://localhost:5194/Reports/CreateReport
 `
 
 (Report Swagger : http://localhost:5194/swagger/index.html)
 
-(Report HealthCheck : http://localhost:5239/reportapi-health)
+(Report HealthCheck : http://localhost:5194/reportapi-health)
+
+![phonebook-diagram](https://raw.githubusercontent.com/ozyptic/PhonebookMicroservices/dev/phonebook_diagram.png)
 
