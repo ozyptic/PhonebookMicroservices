@@ -10,8 +10,8 @@ namespace Phonebook.Report.Infrastructure.Interfaces
     public interface IReportRepository
     {
         Task<IList<Reports>> GetAllReportsAsync();
-        Task<Reports> GetReportByIdAsync(string id);
+        Task<Reports> GetReportByIdAsync(string? id);
         Task<Reports> CreateReportAsync();
-        Task ReportCompletedAsync(string id);
+        Task ReportCompletedAsync(string? id);
     }
 }

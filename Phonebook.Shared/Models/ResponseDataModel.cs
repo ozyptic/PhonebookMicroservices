@@ -17,7 +17,7 @@ namespace Phonebook.Shared.Models
             IsSuccessful = isSuccessful;
         }
 
-        public ResponseDataModel(int statusCode, bool isSuccessful, List<string> errors)
+        public ResponseDataModel(int statusCode, bool isSuccessful, List<string>? errors)
           : this(default(T), statusCode, isSuccessful)
         {
             Errors = errors;
@@ -34,7 +34,7 @@ namespace Phonebook.Shared.Models
         public int StatusCode { get; private set; }
         [JsonIgnore]
         public bool IsSuccessful { get; private set; }
-        public List<string> Errors { get; private set; }
+        public List<string>? Errors { get; private set; }
 
         internal IActionResult CreateResponse()
         {
@@ -58,7 +58,7 @@ namespace Phonebook.Shared.Models
             return new ResponseDataModel<T?>(default(T), statusCode, isOk).CreateResponse();
         }
 
-        public static IActionResult Fail(List<string> errors, int statusCode)
+        public static IActionResult Fail(List<string>? errors, int statusCode)
         {
             return new ResponseDataModel<T>(statusCode, false, errors).CreateResponse();
         }

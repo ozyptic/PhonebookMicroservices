@@ -9,6 +9,7 @@ using Phonebook.Contact.Infrastracture.Interfaces;
 using Phonebook.Contact.Infrastracture.Mappings;
 using Phonebook.Shared.Models;
 using System.ComponentModel.DataAnnotations;
+using Phonebook.Contact.UnitTest.Data;
 using Xunit;
 
 namespace Phonebook.Contact.UnitTest
@@ -37,55 +38,51 @@ namespace Phonebook.Contact.UnitTest
         public async Task GetAllContactInfosAsList_TEST_Success()
         {
             _contactInfoRepoMock.Setup(x => x.GetAllContactInfosAsListAsync())
-              .Returns(Task.FromResult(GetContactInfosFake("123ab456cd78e10")));
+              .Returns(Task.FromResult(FakeDatas.GetContactInfosFake("123ab456cd78e10")));
 
             var actionResult = await _contactInfoController.GetAllContactInfosAsList();
             var objectResult = (ObjectResult)actionResult;
 
             Assert.Equal(objectResult.StatusCode, (int)System.Net.HttpStatusCode.OK);
-            Assert.IsType<ResponseDataModel<IList<ContactInfoVO>>>(objectResult.Value);
+            Assert.IsType<ResponseDataModel<IList<ContactInfoVo>>>(objectResult.Value);
         }
 
         [Fact]
         public async Task GetAllContactsAsList_TEST_Success()
         {
             _contactRepoMock.Setup(x => x.GetAllContactsAsListAsync())
-              .Returns(Task.FromResult(GetContactsFake()));
+              .Returns(Task.FromResult(FakeDatas.GetContactsFake()));
 
             var actionResult = await _contactController.GetAllContactsAsList();
             var objectResult = (ObjectResult)actionResult;
 
             Assert.Equal(objectResult.StatusCode, (int)System.Net.HttpStatusCode.OK);
-            Assert.IsType<ResponseDataModel<IList<ContactInfoVO>>>(objectResult.Value);
+            Assert.IsType<ResponseDataModel<IList<ContactInfoVo>>>(objectResult.Value);
         }
 
         [Fact]
         public async Task GetContactById_TEST_Success()
         {
-            var fakeContactId = "111ab456cd78e10";
-
             _contactRepoMock.Setup(x => x.GetContactByIdAsync(It.IsAny<string>()))
-              .Returns(Task.FromResult(GetContactById(fakeContactId)));
+              .Returns(Task.FromResult(FakeDatas.GetContactById(FakeDatas.FakeContactId)));
 
-            var actionResult = await _contactController.GetContactById(fakeContactId);
+            var actionResult = await _contactController.GetContactById(FakeDatas.FakeContactId);
             var objectResult = (ObjectResult)actionResult;
-            var response = (ResponseDataModel<ContactVO>)objectResult.Value!;
+            var response = (ResponseDataModel<ContactVo>)objectResult.Value!;
 
             Assert.Equal(objectResult.StatusCode, (int)System.Net.HttpStatusCode.OK);
             Assert.NotNull(response);
             Assert.NotNull(response.Data);
-            Assert.Equal(response.Data.Id, fakeContactId);
+            Assert.Equal(response.Data.Id, FakeDatas.FakeContactId);
         }
 
         [Fact]
         public async Task GetContactById_TEST_NotFound()
         {
-            var fakeContactId = "111ab456cd78e13";
-
             _contactRepoMock.Setup(x => x.GetContactByIdAsync(It.IsAny<string>()))
-              .Returns(Task.FromResult(GetContactById(fakeContactId)));
+              .Returns(Task.FromResult(FakeDatas.GetContactById(FakeDatas.FakeContactId)));
 
-            var actionResult = await _contactController.GetContactById(fakeContactId);
+            var actionResult = await _contactController.GetContactById(FakeDatas.FakeContactId);
             var objectResult = (NotFoundResult)actionResult;
 
             Assert.Equal((int)System.Net.HttpStatusCode.NotFound, objectResult.StatusCode);
@@ -94,9 +91,8 @@ namespace Phonebook.Contact.UnitTest
         [Fact]
         public async Task AddContact_TEST_Create()
         {
-            var fakeContactId = "111ab456cd78e14";
-            var fakeContact = GetContactById(fakeContactId);
-            var model = _mapper.Map<ContactAddVO>(fakeContact);
+            var fakeContact = FakeDatas.GetContactById(FakeDatas.FakeContactId);
+            var model = _mapper.Map<ContactAddVo>(fakeContact);
 
             _contactRepoMock.Setup(x => x.AddContactAsync(It.IsAny<Contacts>()))
               .Returns(Task.FromResult(fakeContact));
@@ -109,13 +105,13 @@ namespace Phonebook.Contact.UnitTest
             Assert.Equal(objectResult.StatusCode, (int)System.Net.HttpStatusCode.Created);
             Assert.NotNull(response);
             Assert.NotNull(response.Data);
-            Assert.Equal(response.Data.Id, fakeContactId);
+            Assert.Equal(response.Data.Id, FakeDatas.FakeContactId);
         }
 
         [Fact]
         public Task AddContact_TEST_NotValid()
         {
-            var model = new ContactAddVO
+            var model = new ContactAddVo
             {
                 Name = "",
                 LastName = "Danny",
@@ -125,16 +121,15 @@ namespace Phonebook.Contact.UnitTest
             var validationContext = new ValidationContext(model);
             var results = model.Validate(validationContext);
 
-            Assert.Contains(results, x => x.MemberNames.Contains(nameof(ContactAddVO.Name)));
+            Assert.Contains(results, x => x.MemberNames.Contains(nameof(ContactAddVo.Name)));
             return Task.CompletedTask;
         }
 
         [Fact]
         public async Task AddContactInfo_TEST_Create()
         {
-            var fakeContactInfoId = "123ab456cd78e15";
-            var fakeContactInfo = GetContactInfoById(fakeContactInfoId);
-            var model = _mapper.Map<ContactAddInfoVO>(fakeContactInfo);
+            var fakeContactInfo = FakeDatas.GetContactInfoById(FakeDatas.FakeContactInfoId);
+            var model = _mapper.Map<ContactAddInfoVo>(fakeContactInfo);
 
             _contactInfoRepoMock.Setup(x => x.AddContactInfoAsync(It.IsAny<ContactInfo>()))
               .Returns(Task.FromResult(fakeContactInfo));
@@ -147,13 +142,13 @@ namespace Phonebook.Contact.UnitTest
             Assert.Equal(objectResult.StatusCode, (int)System.Net.HttpStatusCode.Created);
             Assert.NotNull(response);
             Assert.NotNull(response.Data);
-            Assert.Equal(response.Data.Id, fakeContactInfoId);
+            Assert.Equal(response.Data.Id, FakeDatas.FakeContactInfoId);
         }
 
         [Fact]
         public Task AddContactInfo_TEST_NotValid()
         {
-            var model = new ContactInfoVO
+            var model = new ContactInfoVo
             {
                 Id = "123ab456cd78e10",
                 ContactId = "",
@@ -165,8 +160,8 @@ namespace Phonebook.Contact.UnitTest
             var results = model.Validate(validationContext);
 
             var validationResults = results.ToList();
-            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoVO.Value)));
-            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoVO.ContactId)));
+            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoVo.Value)));
+            Assert.Contains(validationResults, x => x.MemberNames.Contains(nameof(ContactInfoVo.ContactId)));
             return Task.CompletedTask;
         }
 
@@ -218,56 +213,6 @@ namespace Phonebook.Contact.UnitTest
             Assert.Equal((int)System.Net.HttpStatusCode.BadRequest, objectResult.StatusCode);
         }
 
-        private Contacts GetContactById(string fakeContactId)
-        {
-            return GetContactsFake().FirstOrDefault(x => x.Id == fakeContactId)!;
-        }
-
-        private ContactInfo GetContactInfoById(string fakeContactInfoId)
-        {
-            return GetContactInfosFake("123ab456cd78e10").FirstOrDefault(x => x.Id == fakeContactInfoId)!;
-        }
-
-        private List<Contacts> GetContactsFake()
-        {
-            return new List<Contacts>
-         {
-           new Contacts
-           {
-               Id="111ab456cd78e10",
-               Name = "Jack",
-               LastName = "Daniels",
-               Company = "Blizzard",
-           },
-            new Contacts
-           {
-               Id="111ab456cd78e11",
-               Name = "Joseph",
-               LastName = "Dieder",
-               Company = "Siemens",
-           },
-        };
-        }
-
-        private List<ContactInfo> GetContactInfosFake(string fakeContactId)
-        {
-            return new List<ContactInfo>
-                  {
-                   new ContactInfo
-                   {
-                       Id = "123ab456cd78e10",
-                       ContactId = fakeContactId,
-                       Value = "05301112233",
-                       ContactInfoType = ContactInfoType.Phone,
-                   },
-                   new ContactInfo
-                   {
-                       Id = "123ab456cd78e11",
-                       ContactId = fakeContactId,
-                       Value = "05359998877",
-                       ContactInfoType = ContactInfoType.Phone,
-                   }
-                  };
-        }
+        
     }
 }

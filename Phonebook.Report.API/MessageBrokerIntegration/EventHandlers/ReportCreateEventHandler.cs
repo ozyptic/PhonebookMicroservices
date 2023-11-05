@@ -9,7 +9,7 @@ namespace Phonebook.Report.API.MessageBrokerIntegration.EventHandlers
     {
         private readonly IReportDetailRepository _reportDetailRepository;
         private readonly IReportRepository _reportRepository;
-        private readonly ILogger<ReportCreateEvent> logger;
+        private readonly ILogger<ReportCreateEvent> _logger;
 
         public ReportCreateEventHandler(
             IReportDetailRepository reportDetailRepository,
@@ -18,23 +18,23 @@ namespace Phonebook.Report.API.MessageBrokerIntegration.EventHandlers
         {
             _reportRepository = reportRepository;
             _reportDetailRepository = reportDetailRepository;
-            this.logger = logger;
+            this._logger = logger;
         }
 
         public async Task Handle(ReportCreateEvent @event)
         {
-            logger.LogInformation("@ RabbitMQ broker handling: {IntegrationEventId} at PhoneBook.Report.API - ({@IntegrationEvent})", @event.ReportId, @event);
+            _logger.LogInformation("@ RabbitMQ broker handling: {IntegrationEventId} at PhoneBook.Report.API - ({@IntegrationEvent})", @event.ReportId, @event);
 
             var report = await _reportRepository.GetReportByIdAsync(@event.ReportId);
             if (report == null) return;
             try
             {
                 await _reportRepository.ReportCompletedAsync(report.Id);
-                logger.LogInformation("@ Report Completed : | {IntegrationEventId} | Report Id : " + report.Id);
+                _logger.LogInformation("@ Report Completed : | {IntegrationEventId} | Report Id : " + report.Id);
             }
             catch (Exception ex)
             {
-                logger.LogInformation("@ Report Not Completed : | {IntegrationEventId} | Error is : " + ex.Message);
+                _logger.LogInformation("@ Report Not Completed : | {IntegrationEventId} | Error is : " + ex.Message);
             }
             if (@event == null) return;
             var details = @event.Details

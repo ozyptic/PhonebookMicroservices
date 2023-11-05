@@ -27,11 +27,11 @@ namespace Phonebook.Contact.API.Controllers.v1
         [HttpPost("AddContactInfo")]
         [ProducesResponseType(typeof(ResponseDataModel<ContactInfo>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ResponseDataModel<string>), (int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> AddContactInfo([FromBody] ContactAddInfoVO contactAddInfoVO)
+        public async Task<IActionResult> AddContactInfo([FromBody] ContactAddInfoVo contactAddInfoVo)
         {
             try
             {
-                var newContactInfo = _mapper.Map<ContactInfo>(contactAddInfoVO);
+                var newContactInfo = _mapper.Map<ContactInfo>(contactAddInfoVo);
                 var contactInfo = await _contactInfoRepository.AddContactInfoAsync(newContactInfo);
 
                 if (contactInfo == null) return BadRequest();
@@ -53,14 +53,14 @@ namespace Phonebook.Contact.API.Controllers.v1
             {
                 var list = await _contactInfoRepository.GetAllContactInfosAsListAsync();
 
-                IList<ContactInfoVO>? infos = null;
+                IList<ContactInfoVo>? infos = null;
                 if (list.Any())
                 {
-                    infos = _mapper.Map<IList<ContactInfoVO>>(list);
+                    infos = _mapper.Map<IList<ContactInfoVo>>(list);
                 }
 
                 Debug.Assert(infos != null, nameof(infos) + " != null");
-                return ResponseDataModel<IList<ContactInfoVO>>.Success(infos, (int)HttpStatusCode.OK);
+                return ResponseDataModel<IList<ContactInfoVo>>.Success(infos, (int)HttpStatusCode.OK);
             }
             catch
             {

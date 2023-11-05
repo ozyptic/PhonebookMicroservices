@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Phonebook.Contact.Domain.VOs
 {
-    public class ContactVO : IValidatableObject
+    public class ContactVo : IValidatableObject
     {
         public required string Id { get; set; }
         public required string Name { get; set; }
         public required string LastName { get; set; }
         public required string Company { get; set; }
-        public IList<ContactInfoVO> ContactInfoVOs { get; set; } = new List<ContactInfoVO>();
+        public IList<ContactInfoVo> ContactInfoVOs { get; set; } = new List<ContactInfoVo>();
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

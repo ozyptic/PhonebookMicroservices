@@ -42,12 +42,12 @@ namespace Phonebook.Report.Infrastructure.Repositories
             return await _reportCollection.Find(x => true).ToListAsync();
         }
 
-        public async Task<Reports> GetReportByIdAsync(string id)
+        public async Task<Reports> GetReportByIdAsync(string? id)
         {
             return await _reportCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task ReportCompletedAsync(string id)
+        public async Task ReportCompletedAsync(string? id)
         {
             var filter = Builders<Reports>.Filter.Eq(s => s.Id, id);
             var update = Builders<Reports>.Update

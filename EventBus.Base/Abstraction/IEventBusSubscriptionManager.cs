@@ -21,13 +21,13 @@ namespace EventBus.Base.Abstraction
 
         bool HasSubscriptionsForEvent(string eventName);
 
-        Type GetEventTypeByName(string eventName);
+        Type? GetEventTypeByName(string eventName);
 
         void Clear();
 
-        IEnumerable<SubscriptionInfo> GetHandlersForEvent<T>() where T : IntegrationEvent;
+        IEnumerable<SubscriptionInfo?> GetHandlersForEvent<T>() where T : IntegrationEvent;
 
-        IEnumerable<SubscriptionInfo> GetHandlersForEvent(string eventName);
+        IEnumerable<SubscriptionInfo?> GetHandlersForEvent(string eventName);
 
         string GetEventKey<T>();
     }

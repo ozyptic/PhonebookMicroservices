@@ -25,7 +25,7 @@ namespace Phonebook.Report.Infrastructure.Repositories
             await _reportDetailsCollection.InsertManyAsync(addReportDetails);
         }
 
-        public async Task<IList<ReportDetail>> GetDetailsByReportIdAsync(string reportId)
+        public async Task<IList<ReportDetail>> GetDetailsByReportIdAsync(string? reportId)
         {
             return await _reportDetailsCollection.Find(x => x.ReportId == reportId).ToListAsync();
         }

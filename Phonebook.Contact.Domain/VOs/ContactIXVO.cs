@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Phonebook.Contact.Domain.VOs
 {
-    public class ContactIXVO
+    public class ContactIxvo
     {
         public required string Id { get; set; }
         public required string Name { get; set; }

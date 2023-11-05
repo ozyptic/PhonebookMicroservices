@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.20.69" />
+    <PackageReference Include="xunit" Version="2.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventBus.Base\EventBus.Base.csproj" />
+    <ProjectReference Include="..\Phonebook.Report.API\Phonebook.Report.API.csproj" />
+    <ProjectReference Include="..\Phonebook.Report.Domain\Phonebook.Report.Domain.csproj" />
+    <ProjectReference Include="..\Phonebook.Report.Infrastructure\Phonebook.Report.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

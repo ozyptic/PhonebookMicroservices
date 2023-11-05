@@ -7,13 +7,13 @@ using EventBus.Base.Events;
 
 namespace EventBus.Base.Abstraction
 {
-    public interface IIntegrationEventHandler<TIntegrationEvent> : IntegrationEventHandler where TIntegrationEvent : IntegrationEvent
+    public interface IIntegrationEventHandler<TIntegrationEvent> : INtegrationEventHandler where TIntegrationEvent : IntegrationEvent
     {
         Task Handle(TIntegrationEvent @event);
     }
 
 
-    public interface IntegrationEventHandler
+    public interface INtegrationEventHandler
     {
 
     }

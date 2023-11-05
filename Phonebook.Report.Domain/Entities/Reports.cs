@@ -13,7 +13,7 @@ namespace Phonebook.Report.Domain.Entities
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         public ReportStatus Status { get; set; }
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime CreatedDate { get; set; }

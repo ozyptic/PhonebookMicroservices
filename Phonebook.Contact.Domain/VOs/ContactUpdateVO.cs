@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Phonebook.Contact.Domain.VOs
 {
-    public class ContactUpdateVO : IValidatableObject
+    public class ContactUpdateVo : IValidatableObject
     {
         public required string Id { get; set; }
         public required string Name { get; set; }

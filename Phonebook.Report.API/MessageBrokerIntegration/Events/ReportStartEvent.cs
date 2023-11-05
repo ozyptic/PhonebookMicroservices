@@ -6,11 +6,11 @@ namespace Phonebook.Report.API.MessageBrokerIntegration.Events
     {
         public ReportStartEvent() { }
 
-        public ReportStartEvent(string reportId)
+        public ReportStartEvent(string? reportId)
         {
             ReportId = reportId;
         }
 
-        public string ReportId { get; set; }
+        public string? ReportId { get; set; }
     }
 }

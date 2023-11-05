@@ -13,12 +13,12 @@ namespace Phonebook.Contact.Infrastracture.Mappings
     {
         public GlobalMappings()
         {
-            CreateMap<Contacts, ContactVO>().ReverseMap();
-            CreateMap<Contacts, ContactIXVO>().ReverseMap();
-            CreateMap<Contacts, ContactUpdateVO>().ReverseMap();
-            CreateMap<Contacts, ContactAddVO>().ReverseMap();
-            CreateMap<ContactInfo, ContactInfoVO>().ReverseMap();
-            CreateMap<ContactInfo, ContactAddInfoVO>().ReverseMap();
+            CreateMap<Contacts, ContactVo>().ReverseMap();
+            CreateMap<Contacts, ContactIxvo>().ReverseMap();
+            CreateMap<Contacts, ContactUpdateVo>().ReverseMap();
+            CreateMap<Contacts, ContactAddVo>().ReverseMap();
+            CreateMap<ContactInfo, ContactInfoVo>().ReverseMap();
+            CreateMap<ContactInfo, ContactAddInfoVo>().ReverseMap();
         }
     }
 }

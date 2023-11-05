@@ -9,7 +9,7 @@ namespace Phonebook.Report.API.IoCs
 {
     public static class ServiceRegisteration
     {
-        public static void ConfigureRabbitMQ(this WebApplicationBuilder builder)
+        public static void ConfigureRabbitMq(this WebApplicationBuilder builder)
         {
             builder.Services.AddSingleton(sp =>
             {

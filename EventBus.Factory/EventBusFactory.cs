@@ -10,7 +10,7 @@ namespace EventBus.Factory
         {
             return config.EventBusType switch
             {
-                _ => new EventBusRabbitMQ(config, serviceProvider),
+                _ => new EventBusRabbitMq(config, serviceProvider),
             };
         }
     }

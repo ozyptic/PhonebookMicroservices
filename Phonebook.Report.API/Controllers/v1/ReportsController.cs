@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Diagnostics;
+using AutoMapper;
 using EventBus.Base.Abstraction;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -44,6 +45,7 @@ namespace Phonebook.Report.API.Controllers.v1
                 reports = _mapper.Map<IList<ReportIxDto>>(list);
             }
 
+            Debug.Assert(reports != null, nameof(reports) + " != null");
             return ResponseDataModel<IList<ReportIxDto>>.Success(reports, (int)HttpStatusCode.OK);
         }
 
@@ -59,15 +61,15 @@ namespace Phonebook.Report.API.Controllers.v1
             var reportStartedEventModel = new ReportStartEvent(newReport.Id);
             _eventBus.Publish(reportStartedEventModel);
 
-            var result = new ResultId<string> { Id = newReport.Id };
-            return ResponseDataModel<ResultId<string>>.Success(result, (int)HttpStatusCode.Created);
+            var result = new ResultId<string?> { Id = newReport.Id };
+            return ResponseDataModel<ResultId<string>>.Success(result!, (int)HttpStatusCode.Created);
         }
 
 
         [HttpGet("GetReportByIdAsync/{id}")]
         [ProducesResponseType(typeof(ResponseDataModel<ReportDto>), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> GetReportById(string id)
+        public async Task<IActionResult> GetReportById(string? id)
         {
             var report = await _reportRepository.GetReportByIdAsync(id);
             if (report == null)

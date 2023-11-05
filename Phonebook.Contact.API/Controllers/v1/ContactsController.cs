@@ -29,7 +29,7 @@ namespace Phonebook.Contact.API.Controllers.v1
         [HttpPost("AddContact")]
         [ProducesResponseType(typeof(ResponseDataModel<Contacts>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ResponseDataModel<string>), (int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> AddContact([FromBody] ContactAddVO model)
+        public async Task<IActionResult> AddContact([FromBody] ContactAddVo model)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace Phonebook.Contact.API.Controllers.v1
         }
 
         [HttpGet("GetContactById/{contactId}")]
-        [ProducesResponseType(typeof(ResponseDataModel<ContactVO>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ResponseDataModel<ContactVo>), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(ResponseDataModel<string>), (int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> GetContactById(string contactId)
         {
@@ -77,15 +77,15 @@ namespace Phonebook.Contact.API.Controllers.v1
                     return NotFound();
                 }
 
-                var model = _mapper.Map<ContactVO>(contact);
+                var model = _mapper.Map<ContactVo>(contact);
 
                 var contactInfos = await _contactInfoRepository.GetContactInfoByContactIdAsync(contact.Id);
                 if (contactInfos != null)
                 {
-                    model.ContactInfoVOs = _mapper.Map<IList<ContactInfoVO>>(contactInfos);
+                    model.ContactInfoVOs = _mapper.Map<IList<ContactInfoVo>>(contactInfos);
                 }
 
-                return ResponseDataModel<ContactVO>.Success(model, (int)HttpStatusCode.OK);
+                return ResponseDataModel<ContactVo>.Success(model, (int)HttpStatusCode.OK);
             }
             catch
             {
@@ -101,14 +101,14 @@ namespace Phonebook.Contact.API.Controllers.v1
             try
             {
                 var list = await _contactsRepository.GetAllContactsAsListAsync();
-                IList<ContactIXVO>? contacts = null;
+                IList<ContactIxvo>? contacts = null;
 
                 if (true)
                 {
-                    contacts = _mapper.Map<IList<ContactIXVO>>(list);
+                    contacts = _mapper.Map<IList<ContactIxvo>>(list);
                 }
 
-                return ResponseDataModel<IList<ContactIXVO>>.Success(contacts, (int)HttpStatusCode.OK);
+                return ResponseDataModel<IList<ContactIxvo>>.Success(contacts, (int)HttpStatusCode.OK);
             }
             catch
             {
