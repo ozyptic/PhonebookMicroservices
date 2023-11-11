@@ -41,7 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "EventB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIGateway", "APIGateway", "{A69452C7-2D77-42B6-957D-2BB517BA3AA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phonebook.APIGateway", "Phonebook.APIGateway\Phonebook.APIGateway.csproj", "{F3957BEB-DB04-47EC-B022-39BEC75445F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.APIGateway", "Phonebook.APIGateway\Phonebook.APIGateway.csproj", "{F3957BEB-DB04-47EC-B022-39BEC75445F8}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{847BFD18-04B2-49A6-AC50-6460A7770D6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,10 @@ Global
 		{F3957BEB-DB04-47EC-B022-39BEC75445F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3957BEB-DB04-47EC-B022-39BEC75445F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3957BEB-DB04-47EC-B022-39BEC75445F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847BFD18-04B2-49A6-AC50-6460A7770D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847BFD18-04B2-49A6-AC50-6460A7770D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847BFD18-04B2-49A6-AC50-6460A7770D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847BFD18-04B2-49A6-AC50-6460A7770D6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

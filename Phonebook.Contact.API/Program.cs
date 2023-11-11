@@ -2,6 +2,7 @@ using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Phonebook.Contact.Infrastracture.IoCs;
 
@@ -10,12 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddHealthChecks()
     .AddMongoDb(
-    mongodbConnectionString: "mongodb://localhost:27017",
+    mongodbConnectionString: builder.Configuration.GetSection("DatabaseSettings:ConnectionString").Value!,
     name: "MongoDb",
     failureStatus: HealthStatus.Unhealthy | HealthStatus.Healthy,
     tags: new string[] { "mongodb" })
     .AddRabbitMQ(
-    rabbitConnectionString: "amqp://guest:guest@localhost:5672",
+    rabbitConnectionString: "amqp://guest:guest@rabbitmq:5672",
     name: "RabbitMQ",
     failureStatus: HealthStatus.Unhealthy | HealthStatus.Healthy,
     tags: new string[] { "rabbitmq" });

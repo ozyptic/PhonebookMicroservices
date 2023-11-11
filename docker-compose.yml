@@ -1,0 +1,63 @@
+version: '3.4'
+
+services:
+  phonebook.apigateway:
+    image: ${DOCKER_REGISTRY-}phonebookapigateway
+    ports:
+      - "52380:443"
+    build:
+      context: .
+      dockerfile: Phonebook.APIGateway/Dockerfile
+    networks:
+      - phonebook_network
+
+  phonebook.report.api:
+    image: ${DOCKER_REGISTRY-}phonebookreportapi
+    build:
+      context: .
+      dockerfile: Phonebook.Report.API/Dockerfile
+    networks:
+      - phonebook_network
+    ports:
+      - "52381:443" 
+
+
+  phonebook.contact.api:
+    image: ${DOCKER_REGISTRY-}phonebookcontactapi
+    build:
+      context: .
+      dockerfile: Phonebook.Contact.API/Dockerfile
+    networks:
+      - phonebook_network
+    ports:
+      - "52382:443"
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: test
+    networks:
+      - phonebook_network
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "15672:15672"  # Management interface
+      - "5672:5672"    # RabbitMQ server
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - phonebook_network
+
+volumes:
+  mongo_data:
+  rabbitmq_data:
+networks:
+  phonebook_network:
+    driver: bridge
+
