@@ -3,70 +3,70 @@
     /* -------------------------CONTACTS----------------------------*/
     {
       "DownstreamPathTemplate": "/api/v1/Contacts/GetAllContactsAsList",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5239
+          "Port": 52382
         }
       ],
       "UpstreamPathTemplate": "/contacts/GetAllContactsAsList",
       "UpstreamHttpMethod": [ "GET" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     {
       "DownstreamPathTemplate": "/api/v1/Contacts/GetContactById/{contactId}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5239
+          "Port": 52382
         }
       ],
       "UpstreamPathTemplate": "/contacts/GetContactById/{contactId}",
       "UpstreamHttpMethod": [ "GET" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     {
       "DownstreamPathTemplate": "/api/v1/Contacts/AddContact",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5239
+          "Port": 52382
         }
       ],
       "UpstreamPathTemplate": "/contacts/AddContact",
       "UpstreamHttpMethod": [ "POST" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     {
       "DownstreamPathTemplate": "/api/v1/Contacts/DeleteContact/{contactId}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5239
+          "Port": 52382
         }
       ],
       "UpstreamPathTemplate": "/contacts/DeleteContact/{contactId}",
       "UpstreamHttpMethod": [ "DELETE" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
 
     /* -------------------------CONTACTINFO----------------------------*/
     {
       "DownstreamPathTemplate": "/api/v1/ContactInfo/GetAllContactInfosAsList",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5239
+          "Port": 52382
         }
       ],
       "UpstreamPathTemplate": "/contactInfo/GetAllContactInfosAsList",
       "UpstreamHttpMethod": [ "GET" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     {
       "DownstreamPathTemplate": "/api/v1/ContactDetails/GetContactInfoById/{contactId}",
@@ -74,78 +74,78 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5239
+          "Port": 52382
         }
       ],
       "UpstreamPathTemplate": "/ContactInfo/GetContactInfoById/{contactId}",
       "UpstreamHttpMethod": [ "GET" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     {
       "DownstreamPathTemplate": "/api/v1/ContactInfo/AddContactInfo",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5239
+          "Port": 52382
         }
       ],
       "UpstreamPathTemplate": "/contactInfo/AddContactInfo",
       "UpstreamHttpMethod": [ "POST" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     {
       "DownstreamPathTemplate": "/api/v1/ContactInfo/DeleteContactInfo/{contactId}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5239
+          "Port": 52382
         }
       ],
       "UpstreamPathTemplate": "/ContactInfo/DeleteContactInfo/{contactId}",
       "UpstreamHttpMethod": [ "DELETE" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     /*---------------------------- REPORTS ----------------------------*/
     {
       "DownstreamPathTemplate": "/api/v1/Reports/CreateReport",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5194
+          "Port": 52381
         }
       ],
       "UpstreamPathTemplate": "/Reports/CreateReport",
       "UpstreamHttpMethod": [ "POST" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     {
       "DownstreamPathTemplate": "/api/v1/Reports/GetAllReports",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5194
+          "Port": 52381
         }
       ],
       "UpstreamPathTemplate": "/Reports/GetAllReports",
       "UpstreamHttpMethod": [ "GET" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     },
     {
       "DownstreamPathTemplate": "/api/v1/Reports/GetReportByIdAsync/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5194
+          "Port": 52381
         }
       ],
       "UpstreamPathTemplate": "/Reports/GetReportByIdAsync/{id}",
       "UpstreamHttpMethod": [ "GET" ],
-      "UpstreamScheme": "http"
+      "UpstreamScheme": "https"
     }
   ],
   "GlobalConfiguration": {
