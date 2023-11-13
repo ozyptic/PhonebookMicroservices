@@ -46,6 +46,7 @@ namespace EventBus.RabbitMQ
         {
             this.connectionFactory = connectionFactory;
             this.connectionRetryCount = connectionRetryCount;
+            _connection = connectionFactory!.CreateConnection();
         }
 
         public bool IsConnected => _connection != null && _connection.IsOpen;

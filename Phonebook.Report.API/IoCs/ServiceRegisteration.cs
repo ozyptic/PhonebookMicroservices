@@ -21,7 +21,9 @@ namespace Phonebook.Report.API.IoCs
                     Connection = new ConnectionFactory()
                     {
                         HostName = builder.Configuration.GetValue<string>("RabbitMQConfig:HostName"),
-                        Port = builder.Configuration.GetValue<int>("RabbitMQConfig:Port")
+                        Port = builder.Configuration.GetValue<int>("RabbitMQConfig:Port"),
+                        UserName = builder.Configuration.GetValue<string>("RabbitMQConfig:UserName"),
+                        Password = builder.Configuration.GetValue<string>("RabbitMQConfig:Password")
                     },
                     EventBusType = EventBusType.RabbitMQ,
 
