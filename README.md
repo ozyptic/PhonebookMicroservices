@@ -49,63 +49,15 @@ In terms of data structure:
 - .NET 7
 - MongoDB
 - RabbitMQ
+- Docker
 
-### HTTP Requests 
-#### Contact
-`
-  POST http://localhost:5239/contacts/AddContact
-`
+Contact-ContactInfo Endpoints - Swagger : https://localhost:52382/swagger/index.html
 
-`
-  DELETE http://localhost:5239/contacts/DeleteContact/{contactId}
-`
+Contact-ContactInfo HealthCheck : /contactapi-health
 
-`
-  GET http://localhost:5239/contacts/GetContactById/{contactId}
-`
+Report Endpoints - Swagger : https://localhost:52381/swagger/index.html
 
-`
-  GET http://localhost:5239/contacts/GetAllContactsAsList
-`
-
-#### ContactInfo
-`
-  POST http://localhost:5239/contactInfo/AddContactInfo
-`
-
-`
-  GET http://localhost:5239/contactInfo/GetAllContactInfosAsList
-`
-
-`
-  DELETE http://localhost:5239/contactInfo/DeleteContactInfo/{contactId}
-`
-
-`
-  GET http://localhost:5239/contactInfo/GetContactInfoById/{contactId}
-`
-
-(Contact-ContactInfo Swagger : http://localhost:5239/swagger/index.html)
-
-(Contact-ContactInfo HealthCheck : http://localhost:5239/contactapi-health)
-
-#### Reports
-
-`
-  GET http://localhost:5194/Reports/GetAllReports
-`
-
-`
-  GET http://localhost:5194/Reports/GetReportById/{id}
-`
-
-`
-  POST http://localhost:5194/Reports/CreateReport
-`
-
-(Report Swagger : http://localhost:5194/swagger/index.html)
-
-(Report HealthCheck : http://localhost:5194/reportapi-health)
+Report HealthCheck : /reportapi-health
 
 ![phonebook-diagram](https://raw.githubusercontent.com/ozyptic/PhonebookMicroservices/dev/phonebook_diagram.png)
 
